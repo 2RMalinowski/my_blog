@@ -11,8 +11,8 @@ class Post(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250,
                             unique_for_date='publish')
-    author = models.ForeignKey(User,
-                               related_name='blog_posts')
+    # author = models.ForeignKey(User,
+    #                            related_name='blog_posts') # on_delete=models)
     body = models.TextField()
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
@@ -20,8 +20,6 @@ class Post(models.Model):
     status = models.CharField(max_length=10,
                               choices=STATUS_CHOICES,
                               default='draft')
-    objects = models.Manager() # Menedżer domyślny.
-    published = PublishedManager() # Menedżer niestandardowy.
 
     class Meta:
         ordering = ('-publish',)
