@@ -9,4 +9,3 @@ urlpatterns = [
     # path(views.PostListView.as_view(), name='post_list'),
     path('post/<int:year>/<int:month>/<int:day>/', views.post_detail, name='post_detail')
 ]
-
